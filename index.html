@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NicheIQ — Find Your Niche</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a0a0f;--surface:#111118;--card:#16161f;--border:#2a2a3a;--accent:#7c5cfc;--a2:#fc5c7d;--a3:#5cf0c8;--a4:#fcb45c;--text:#f0eeff;--muted:#7a7a9a;--glow:rgba(124,92,252,0.25)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(124,92,252,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(124,92,252,0.04) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;z-index:0}
+.lang-bar{display:flex;justify-content:flex-end;padding:14px 20px 0;max-width:780px;margin:0 auto;position:relative;z-index:2}
+.lang-toggle{display:flex;background:var(--surface);border:1px solid var(--border);border-radius:100px;padding:3px;gap:2px}
+.lang-btn{padding:5px 16px;border-radius:100px;border:none;background:transparent;color:var(--muted);font-size:13px;font-weight:500;cursor:pointer;transition:all .22s;font-family:'DM Sans',sans-serif}
+.lang-btn.active{background:linear-gradient(135deg,var(--accent),#5a3cc4);color:white;box-shadow:0 2px 10px var(--glow)}
+.container{max-width:780px;margin:0 auto;padding:0 20px 80px;position:relative;z-index:1}
+header{padding:24px 0 22px;text-align:center}
+.badge{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,rgba(124,92,252,0.2),rgba(92,240,200,0.1));border:1px solid rgba(124,92,252,0.3);border-radius:100px;padding:6px 16px;font-size:11px;font-weight:600;color:var(--a3);letter-spacing:1px;text-transform:uppercase;margin-bottom:16px}
+.dot{width:6px;height:6px;background:var(--a3);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(0.8)}}
+h1{font-family:'Syne',sans-serif;font-size:clamp(28px,6vw,48px);font-weight:800;line-height:1.1;background:linear-gradient(135deg,#fff 30%,var(--accent) 70%,var(--a2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:10px}
+.subtitle{color:var(--muted);font-size:15px;line-height:1.6;max-width:500px;margin:0 auto}
+.prog-wrap{margin:24px 0 20px;display:none}.prog-wrap.on{display:block}
+.prog-top{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-bottom:8px}
+.prog-track{height:3px;background:var(--border);border-radius:99px;overflow:hidden}
+.prog-bar{height:100%;background:linear-gradient(90deg,var(--accent),var(--a2));border-radius:99px;transition:width .5s ease}
+#chat{display:flex;flex-direction:column;gap:14px}
+.msg{display:flex;gap:12px;animation:fadeUp .4s ease both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.msg.ai{align-items:flex-start}.msg.user{flex-direction:row-reverse}
+.av{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;margin-top:2px}
+.av.ai-av{background:linear-gradient(135deg,var(--accent),var(--a2));box-shadow:0 0 16px var(--glow)}
+.av.u-av{background:var(--card);border:1px solid var(--border)}
+.bub{max-width:85%;padding:13px 17px;border-radius:16px;font-size:15px;line-height:1.65}
+.msg.ai .bub{background:var(--card);border:1px solid var(--border);border-top-left-radius:4px}
+.msg.user .bub{background:linear-gradient(135deg,var(--accent),#5a3cc4);border-top-right-radius:4px;color:#fff}
+.chips-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.chip{padding:8px 16px;border-radius:100px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:13px;cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif}
+.chip:hover{border-color:var(--accent);background:rgba(124,92,252,0.1);color:#fff;transform:translateY(-1px)}
+.chip.sel{border-color:var(--accent);background:rgba(124,92,252,0.2);color:var(--a3)}
+.think{display:flex;gap:5px;align-items:center;padding:13px 17px}
+.think span{width:7px;height:7px;background:var(--accent);border-radius:50%;animation:bounce 1.2s infinite}
+.think span:nth-child(2){animation-delay:.2s}.think span:nth-child(3){animation-delay:.4s}
+@keyframes bounce{0%,80%,100%{transform:translateY(0);opacity:.4}40%{transform:translateY(-6px);opacity:1}}
+.result-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:22px;margin-top:6px}
+.rsec{margin-bottom:20px}.rsec:last-child{margin-bottom:0}
+.rlabel{font-family:'Syne',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--a3);margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.rlabel::after{content:'';flex:1;height:1px;background:var(--border)}
+.rtitle{font-family:'Syne',sans-serif;font-size:21px;font-weight:700;color:white;margin-bottom:7px}
+.rtext{color:#c0bdd8;font-size:14px;line-height:1.7}
+.tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:9px}
+.tag{padding:5px 12px;border-radius:100px;font-size:12px;font-weight:500}
+.tag.teal{background:rgba(92,240,200,0.1);border:1px solid rgba(92,240,200,0.25);color:var(--a3)}
+.divider{height:1px;background:var(--border);margin:18px 0}
+.outreach-box{background:linear-gradient(135deg,rgba(252,180,92,0.07),rgba(252,92,125,0.04));border:1px solid rgba(252,180,92,0.22);border-radius:14px;padding:18px;margin-top:10px}
+.outreach-msg{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px 16px;color:#d8d4f0;font-size:14px;line-height:1.75;white-space:pre-wrap}
+.copy-btn{margin-top:10px;display:inline-flex;align-items:center;gap:7px;padding:8px 17px;border-radius:100px;border:1px solid var(--border);background:transparent;color:var(--muted);font-size:13px;cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif}
+.copy-btn:hover{border-color:var(--a3);color:var(--a3)}.copy-btn.ok{color:var(--a3);border-color:var(--a3)}
+.portfolio-input-wrap{background:var(--card);border:1px solid rgba(92,240,200,0.2);border-radius:14px;padding:16px;margin-top:10px}
+.portfolio-input-wrap textarea{width:100%;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:12px 14px;color:var(--text);font-size:14px;font-family:'DM Sans',sans-serif;resize:vertical;min-height:90px;outline:none;line-height:1.6}
+.portfolio-input-wrap textarea:focus{border-color:var(--accent)}
+.portfolio-input-wrap textarea::placeholder{color:var(--muted)}
+.portfolio-submit{margin-top:10px;padding:9px 22px;border-radius:100px;background:linear-gradient(135deg,var(--accent),#5a3cc4);border:none;color:white;font-size:14px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s}
+.portfolio-submit:hover{transform:translateY(-1px);box-shadow:0 4px 16px var(--glow)}
+.chat-hint{background:linear-gradient(135deg,rgba(92,240,200,0.06),rgba(124,92,252,0.06));border:1px solid rgba(92,240,200,0.15);border-radius:12px;padding:12px 16px;font-size:13.5px;color:var(--a3);margin-top:4px}
+.restart-btn{margin-top:14px;padding:9px 20px;border-radius:100px;border:1px solid var(--border);background:transparent;color:var(--muted);font-size:13px;cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif}
+.restart-btn:hover{border-color:var(--a2);color:var(--a2)}
+#input-area{position:fixed;bottom:0;left:0;right:0;background:linear-gradient(transparent,var(--bg) 28%);padding:18px 20px;z-index:10}
+.input-box{max-width:780px;margin:0 auto;display:flex;gap:10px;align-items:center;background:var(--card);border:1px solid var(--border);border-radius:16px;padding:9px 9px 9px 17px;transition:border-color .2s,box-shadow .2s}
+.input-box:focus-within{border-color:var(--accent);box-shadow:0 0 0 3px rgba(124,92,252,0.1)}
+#user-input{flex:1;background:none;border:none;outline:none;color:var(--text);font-size:15px;font-family:'DM Sans',sans-serif;resize:none;max-height:120px;min-height:24px;line-height:1.5}
+#user-input::placeholder{color:var(--muted)}
+#send-btn{width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#5a3cc4);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0;color:white}
+#send-btn:hover:not(:disabled){transform:scale(1.05);box-shadow:0 0 14px var(--glow)}
+#send-btn:disabled{opacity:.35;cursor:not-allowed}
+.spacer{height:120px}#bottom{height:1px}
+</style>
+</head>
+<body>
+<div class="lang-bar">
+  <div class="lang-toggle">
+    <button class="lang-btn active" id="btn-en" onclick="setLang('en')">English</button>
+    <button class="lang-btn" id="btn-ur" onclick="setLang('ur')">اردو</button>
+  </div>
+</div>
+<div class="container">
+  <header>
+    <div class="badge"><span class="dot"></span> <span id="badge-txt">AI-Powered Niche Discovery</span></div>
+    <h1 id="main-h1">Find Your Exact Niche & First Clients</h1>
+    <p class="subtitle" id="main-sub">Answer a few questions — AI finds your niche, target audience, their problems, solutions, and writes your first client outreach message.</p>
+  </header>
+  <div class="prog-wrap" id="prog-wrap">
+    <div class="prog-top"><span id="prog-label">Question 1/7</span><span id="prog-pct">0%</span></div>
+    <div class="prog-track"><div class="prog-bar" id="prog-bar" style="width:0%"></div></div>
+  </div>
+  <div id="chat"></div>
+  <div class="spacer"></div>
+  <div id="bottom"></div>
+</div>
+<div id="input-area">
+  <div class="input-box">
+    <textarea id="user-input" rows="1" placeholder="Type your answer here..." disabled></textarea>
+    <button id="send-btn" disabled>
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
+      </svg>
+    </button>
+  </div>
+</div>
+
+<script>
+const UI = {
+  en: {
+    badge:"AI-Powered Niche Discovery", h1:"Find Your Exact Niche & First Clients",
+    sub:"Answer a few questions — AI finds your niche, target audience, their problems, solutions, and writes your first client outreach message.",
+    ph:"Type your answer here...", phChat:"Ask anything about your niche, outreach, next steps...",
+    progTxt:(c,t)=>`Question ${c} / ${t}`,
+    analyzing:"Thank you! Analyzing your full profile... crafting your personalized niche report 🔍",
+    analyzingPortfolio:"Analyzing your portfolio to personalize your outreach message... 🔍",
+    resultIntro:"✅ Analysis complete! Here's your personalized roadmap:",
+    chatHint:"💬 Questions about your niche, outreach, or next steps? Ask me anything!",
+    restart:"↩ Start Over", copy:"Copy Message", copied:"✓ Copied!",
+    labels:{
+      niche:"Your Exact Niche", why:"Why This Niche?", audience:"Target Audience",
+      problems:"Their Problems", solutions:"Your Solutions", ai:"AI Era Opportunity",
+      step:"First Step This Week", outreach:"✉️ Your Client Outreach Message",
+      outreachPortfolio:"Personalized using your portfolio — ready to send",
+      outreachGeneric:"Niche-specific — ready to send"
+    },
+    portfolioHasQ:"You have portfolio work — great! Want AI to personalize your outreach using your actual work?",
+    portfolioOptYes:"Yes — I'll describe my work",
+    portfolioOptNo:"No — write niche-based message",
+    portfolioDescQ:"Describe your best portfolio work in 2–3 sentences.\nWhat did you make? For whom? What result did it get?\n\n(e.g. \"I designed a Shopify store for a clothing brand that boosted their sales by 40%\")",
+    portfolioDescPh:"Describe your best work here...",
+    portfolioDescBtn:"Use This for My Outreach →",
+    qs:[
+      {key:"skill",     q:"Hey! 👋 I'm your AI Niche Advisor.\n\nWhat is your main skill? (e.g. Graphic Design, Video Editing, Coding, Writing, Marketing, Photography, Teaching...)",type:"text"},
+      {key:"experience",q:"How long have you been working with this skill?",type:"chips",opts:["Just Started (0–6 months)","Beginner (6m–1 yr)","Intermediate (1–3 yrs)","Experienced (3–5 yrs)","Expert (5+ yrs)"]},
+      {key:"subskills", q:"What specific things can you do within this skill? List everything.\n(e.g. if Design → Logo, Social Media, UI/UX, Branding...)",type:"text"},
+      {key:"enjoy",     q:"Which type of work do you enjoy most within your skill?",type:"text"},
+      {key:"portfolio", q:"Do you have a portfolio or past work to show clients?",type:"chips",opts:["Yes — strong portfolio","Some projects","Only practice work","No portfolio yet"]},
+      {key:"tools",     q:"What tools or software do you use?\n(e.g. Figma, Photoshop, Python, Premiere Pro, Canva, ChatGPT...)",type:"text"},
+      {key:"goal",      q:"Last one! What is your main goal with this skill?",type:"chips",opts:["Start Freelancing","Build an Agency","Grow as Content Creator","Get a Full-Time Job","Create Passive Income"]}
+    ]
+  },
+  ur: {
+    badge:"AI نچ ڈسکوری ٹول", h1:"Apni Exact Niche Aur Pehle Clients Dhundo",
+    sub:"Kuch sawalaat ke jawab do — AI tumhari exact niche, target audience, unki problems, solutions aur pehla client outreach message tayyar karega.",
+    ph:"Yahan jawab likhein...", phChat:"Niche, outreach ya next steps ke baare mein kuch bhi poochein...",
+    progTxt:(c,t)=>`Sawal ${c} / ${t}`,
+    analyzing:"Shukriya! Ab aapka mukammal profile analyze ho raha hai... AI aapka niche report tayyar kar raha hai 🔍",
+    analyzingPortfolio:"Aapka portfolio analyze ho raha hai taake outreach message personalize ho sake... 🔍",
+    resultIntro:"✅ Analysis mukammal! Yeh raha aapka zaruri roadmap:",
+    chatHint:"💬 Apni niche, outreach ya next steps ke baare mein koi bhi sawal pooch sakte hain!",
+    restart:"↩ Dobara shuru karein", copy:"Copy karein", copied:"✓ Copy ho gaya!",
+    labels:{
+      niche:"Aapki Exact Niche", why:"Yeh niche kyun?", audience:"Target Audience",
+      problems:"Un ki mushkilaat", solutions:"Aapke solutions", ai:"AI Era mauqa",
+      step:"Pehla qadam (is hafte)", outreach:"✉️ Aapka Client Outreach Message",
+      outreachPortfolio:"Aapke portfolio ke mutabiq — bhejne ke liye tayyar",
+      outreachGeneric:"Niche ke mutabiq — bhejne ke liye tayyar"
+    },
+    portfolioHasQ:"Aapke paas portfolio hai — zabardast! Kya AI aapke asli kaam ke mutabiq outreach message likhe?",
+    portfolioOptYes:"Haan — main apna kaam describe karunga",
+    portfolioOptNo:"Nahi — niche-based message likho",
+    portfolioDescQ:"Apna best portfolio kaam 2-3 sentences mein describe karein.\nKya banaya? Kiske liye? Kya result mila?\n\n(Misal: \"Maine ek clothing brand ka Shopify store design kiya jis se unki sales 40% barhi\")",
+    portfolioDescPh:"Apna best kaam yahan describe karein...",
+    portfolioDescBtn:"Isi se Outreach likho →",
+    qs:[
+      {key:"skill",     q:"Assalam o Alaikum! 👋 Main aapka AI Niche Advisor hun.\n\nAapki main skill kya hai? (jaise Graphic Design, Video Editing, Coding, Writing, Marketing, Photography...)",type:"text"},
+      {key:"experience",q:"Yeh skill aap kitne arse se seekh ya use kar rahe hain?",type:"chips",opts:["Abhi shuru kiya (0–6 maah)","Beginner (6m–1 saal)","Intermediate (1–3 saal)","Experienced (3–5 saal)","Expert (5+ saal)"]},
+      {key:"subskills", q:"Is skill ke andar specifically kya kya aata hai? Sab batayein.\n(Misal: Design → Logo, Social Media, UI/UX, Branding...)",type:"text"},
+      {key:"enjoy",     q:"Apni skill mein konsa kaam karte waqt sabse zyada maza aata hai?",type:"text"},
+      {key:"portfolio", q:"Kya aapke paas koi portfolio ya past work hai jo clients ko dikha sakein?",type:"chips",opts:["Haan — mazboot portfolio hai","Kuch projects hain","Sirf practice work hai","Abhi kuch nahi hai"]},
+      {key:"tools",     q:"Aap konse tools ya software use karte hain?\n(jaise Figma, Photoshop, Python, Premiere Pro, Canva, ChatGPT...)",type:"text"},
+      {key:"goal",      q:"Aakhri sawal! Is skill se aapka main goal kya hai?",type:"chips",opts:["Freelancing shuru karna","Agency banana","Content Creator banna","Full-Time Job chahiye","Passive Income chahiye"]}
+    ]
+  }
+};
+
+let lang='en', curQ=0, answers={}, portfolioDesc='', lastResult=null, chatHistory=[], mode='quiz';
+const chat=document.getElementById('chat');
+const progWrap=document.getElementById('prog-wrap');
+const progBar=document.getElementById('prog-bar');
+const progLbl=document.getElementById('prog-label');
+const progPct=document.getElementById('prog-pct');
+const inp=document.getElementById('user-input');
+const btn=document.getElementById('send-btn');
+
+function setLang(l){
+  lang=l;
+  document.getElementById('btn-en').classList.toggle('active',l==='en');
+  document.getElementById('btn-ur').classList.toggle('active',l==='ur');
+  const U=UI[l];
+  document.getElementById('badge-txt').textContent=U.badge;
+  document.getElementById('main-h1').textContent=U.h1;
+  document.getElementById('main-sub').textContent=U.sub;
+  inp.placeholder=U.ph;
+  if(curQ===0&&chat.children.length===0)return;
+  doRestart();
+}
+
+const wait=ms=>new Promise(r=>setTimeout(r,ms));
+function scrollBot(){setTimeout(()=>document.getElementById('bottom').scrollIntoView({behavior:'smooth'}),80)}
+function enableInp(){inp.disabled=false;btn.disabled=false;inp.focus()}
+function disableInp(){inp.disabled=true;btn.disabled=true}
+
+function updateProg(){
+  const U=UI[lang],total=U.qs.length;
+  const pct=Math.round((curQ/total)*100);
+  progBar.style.width=pct+'%';
+  progLbl.textContent=U.progTxt(Math.min(curQ+1,total),total);
+  progPct.textContent=pct+'%';
+}
+
+function addAI(html,isHTML=false){
+  const m=document.createElement('div');m.className='msg ai';
+  m.innerHTML=`<div class="av ai-av">✦</div><div class="bub">${isHTML?html:html.replace(/\n/g,'<br>')}</div>`;
+  chat.appendChild(m);scrollBot();return m;
+}
+function addUser(text){
+  const m=document.createElement('div');m.className='msg user';
+  m.innerHTML=`<div class="bub">${text}</div><div class="av u-av">👤</div>`;
+  chat.appendChild(m);scrollBot();
+}
+function showThink(){
+  const m=document.createElement('div');m.className='msg ai';m.id='think';
+  m.innerHTML=`<div class="av ai-av">✦</div><div class="bub"><div class="think"><span></span><span></span><span></span></div></div>`;
+  chat.appendChild(m);scrollBot();
+}
+function rmThink(){const e=document.getElementById('think');if(e)e.remove()}
+function showChips(opts){
+  const row=document.createElement('div');row.className='chips-row';row.id='chips';
+  opts.forEach(o=>{
+    const c=document.createElement('button');c.className='chip';c.textContent=o;
+    c.onclick=()=>{document.querySelectorAll('.chip').forEach(x=>x.classList.remove('sel'));c.classList.add('sel');setTimeout(()=>handleChip(o),280)};
+    row.appendChild(c);
+  });
+  chat.appendChild(row);scrollBot();
+}
+function rmChips(){const e=document.getElementById('chips');if(e)e.remove()}
+
+async function askQ(idx){
+  const U=UI[lang];
+  if(idx>=U.qs.length){await doPortfolioStep();return}
+  progWrap.classList.add('on');updateProg();
+  const q=U.qs[idx];
+  await wait(280);addAI(q.q);
+  if(q.type==='chips'){disableInp();showChips(q.opts)}
+  else enableInp();
+}
+
+function handleChip(val){
+  rmChips();disableInp();addUser(val);
+  answers[UI[lang].qs[curQ].key]=val;curQ++;
+  wait(400).then(()=>askQ(curQ));
+}
+
+btn.addEventListener('click',onSend);
+inp.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();onSend()}});
+inp.addEventListener('input',()=>{inp.style.height='auto';inp.style.height=Math.min(inp.scrollHeight,120)+'px'});
+
+function onSend(){
+  const val=inp.value.trim();if(!val)return;
+  if(mode==='quiz')handleText(val);
+  else if(mode==='chat')handleChat(val);
+}
+function handleText(val){
+  rmChips();disableInp();inp.value='';inp.style.height='auto';
+  addUser(val);answers[UI[lang].qs[curQ].key]=val;curQ++;
+  wait(400).then(()=>askQ(curQ));
+}
+
+async function doPortfolioStep(){
+  const U=UI[lang];
+  progBar.style.width='92%';
+  const noPortfolio=['no portfolio yet','only practice','abhi kuch nahi','sirf practice'];
+  const ans=(answers.portfolio||'').toLowerCase();
+  const hasPortfolio=!noPortfolio.some(k=>ans.includes(k));
+  if(!hasPortfolio){portfolioDesc='';await doGenerate();return}
+  await wait(300);addAI(U.portfolioHasQ);await wait(100);
+  const row=document.createElement('div');row.className='chips-row';row.id='chips';
+  const yesBtn=document.createElement('button');yesBtn.className='chip';yesBtn.textContent=U.portfolioOptYes;
+  yesBtn.onclick=async()=>{row.remove();addUser(U.portfolioOptYes);await wait(300);showPortfolioDescBox()};
+  const noBtn=document.createElement('button');noBtn.className='chip';noBtn.textContent=U.portfolioOptNo;
+  noBtn.onclick=async()=>{row.remove();addUser(U.portfolioOptNo);portfolioDesc='';await wait(300);await doGenerate()};
+  row.appendChild(yesBtn);row.appendChild(noBtn);chat.appendChild(row);scrollBot();disableInp();
+}
+
+function showPortfolioDescBox(){
+  const U=UI[lang];
+  addAI(U.portfolioDescQ);
+  const wrap=document.createElement('div');wrap.className='msg ai';wrap.id='port-wrap';
+  const box=document.createElement('div');box.className='portfolio-input-wrap';
+  const ta=document.createElement('textarea');ta.placeholder=U.portfolioDescPh;
+  const sub=document.createElement('button');sub.className='portfolio-submit';sub.textContent=U.portfolioDescBtn;
+  sub.onclick=async()=>{
+    const val=ta.value.trim();
+    if(!val){ta.style.borderColor='var(--a2)';ta.focus();return}
+    wrap.remove();addUser(val);portfolioDesc=val;await wait(300);await doGenerate();
+  };
+  box.appendChild(ta);box.appendChild(sub);
+  wrap.innerHTML=`<div class="av ai-av">✦</div>`;wrap.appendChild(box);
+  chat.appendChild(wrap);scrollBot();ta.focus();disableInp();
+}
+
+// ── API call via Vercel proxy ──────────────────
+async function callAI(systemMsg, messages, maxTok=1600){
+  const res=await fetch('/api/chat',{
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({system:systemMsg||undefined, messages, max_tokens:maxTok})
+  });
+  const data=await res.json();
+  if(data.error) throw new Error(data.error);
+  return data.result||'';
+}
+
+async function doGenerate(){
+  const U=UI[lang];
+  progBar.style.width='100%';progPct.textContent='100%';
+  progLbl.textContent=lang==='en'?'Analyzing...':'Analyze ho raha hai...';
+  mode='quiz';
+  addAI(U.analyzing);await wait(400);showThink();disableInp();
+
+  const langNote=lang==='en'
+    ?'Respond in English.'
+    :'Respond in Roman Urdu mixed with English. Keep it natural and conversational.';
+
+  const nichePrompt=`You are a professional niche discovery consultant. ${langNote}
+
+User profile:
+- Skill: ${answers.skill}
+- Experience: ${answers.experience}
+- Sub-skills: ${answers.subskills}
+- Enjoys most: ${answers.enjoy}
+- Portfolio status: ${answers.portfolio}
+- Tools: ${answers.tools}
+- Goal: ${answers.goal}
+
+Return ONLY a raw JSON object. No markdown, no backticks, no explanation.
+{"niche":{"title":"Very specific niche title","description":"2 sentences about this niche"},"whyThisNiche":"2 sentences why this matches their skills","targetAudience":{"primary":"1 sentence describing ideal client","segments":["seg1","seg2","seg3","seg4"]},"problems":["p1","p2","p3","p4","p5"],"solutions":["s1","s2","s3","s4"],"aiOpportunity":"2 sentences naming specific AI tools","firstStep":"1 concrete action this week"}`;
+
+  try{
+    const raw=await callAI(null,[{role:'user',content:nichePrompt}],1500);
+    const s=raw.indexOf('{'),e=raw.lastIndexOf('}');
+    if(s===-1||e===-1)throw new Error('Invalid response');
+    const result=JSON.parse(raw.slice(s,e+1));
+    lastResult=result;rmThink();
+    await doOutreach(result);
+  }catch(err){
+    rmThink();console.error(err);
+    addAI(lang==='en'?`Sorry, something went wrong: ${err.message}. Please try again.`:`Kuch masla aa gaya: ${err.message}. Dobara try karein.`);
+    enableInp();
+  }
+}
+
+async function doOutreach(result){
+  const U=UI[lang];
+  const langNote=lang==='en'?'Write in English.':'Write in Roman Urdu mixed with English. Natural, professional.';
+  const hasPortfolio=portfolioDesc.length>0;
+  if(hasPortfolio){addAI(U.analyzingPortfolio);await wait(300);showThink()}
+
+  const outreachPrompt=`You are a top freelance sales copywriter. ${langNote}
+
+Freelancer profile:
+- Niche: ${result.niche.title}
+- Skill: ${answers.skill}
+- Sub-skills: ${answers.subskills}
+- Target client: ${result.targetAudience.primary}
+- Client pain points: ${result.problems.slice(0,3).join('; ')}
+${hasPortfolio?`- Portfolio work: ${portfolioDesc}`:`- Goal: ${answers.goal}`}
+
+Write a SHORT (80-100 words), HIGH-CONVERTING, PROFESSIONAL outreach message.
+Rules:
+1. Open with a specific pain point the TARGET CLIENT faces
+2. Briefly mention what you do and your skill
+${hasPortfolio?'3. Naturally reference a result from the portfolio work as proof':'3. Mention a concrete benefit you deliver'}
+4. End with ONE soft, low-pressure call to action
+5. NO fluff. NO "I hope this finds you well". NO generic opener.
+
+Return ONLY the message text. Nothing else.`;
+
+  try{
+    const outreach=await callAI(null,[{role:'user',content:outreachPrompt}],600);
+    rmThink();showResult(result,outreach.trim(),hasPortfolio);
+  }catch(err){
+    rmThink();console.error(err);showResult(result,'',false);
+  }
+}
+
+function showResult(r,outreachMsg,isPortfolioBased){
+  const U=UI[lang];
+  addAI(`<strong>${U.resultIntro}</strong>`,true);
+  const oid='om-'+Date.now();
+  const outreachLabel=isPortfolioBased?U.labels.outreachPortfolio:U.labels.outreachGeneric;
+  const html=`
+  <div class="result-card">
+    <div class="rsec"><div class="rlabel">✦ ${U.labels.niche}</div><div class="rtitle">${r.niche.title}</div><div class="rtext">${r.niche.description}</div></div>
+    <div class="divider"></div>
+    <div class="rsec"><div class="rlabel">🎯 ${U.labels.why}</div><div class="rtext">${r.whyThisNiche}</div></div>
+    <div class="divider"></div>
+    <div class="rsec">
+      <div class="rlabel">👥 ${U.labels.audience}</div>
+      <div class="rtext" style="margin-bottom:8px">${r.targetAudience.primary}</div>
+      <div class="tags">${r.targetAudience.segments.map(s=>`<span class="tag teal">${s}</span>`).join('')}</div>
+    </div>
+    <div class="divider"></div>
+    <div class="rsec">
+      <div class="rlabel">⚡ ${U.labels.problems}</div>
+      ${r.problems.map((p,i)=>`<div style="display:flex;gap:10px;align-items:flex-start;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:14px;color:#c0bce0;line-height:1.6"><span style="width:22px;height:22px;border-radius:6px;background:rgba(252,92,125,.15);color:#ff7fa0;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0">${i+1}</span><span>${p}</span></div>`).join('')}
+    </div>
+    <div class="divider"></div>
+    <div class="rsec">
+      <div class="rlabel">💡 ${U.labels.solutions}</div>
+      ${r.solutions.map((s,i)=>`<div style="display:flex;gap:10px;align-items:flex-start;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:14px;color:#c0bce0;line-height:1.6"><span style="width:22px;height:22px;border-radius:6px;background:rgba(124,92,252,.15);color:#a88fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0">${i+1}</span><span>${s}</span></div>`).join('')}
+    </div>
+    <div class="divider"></div>
+    <div class="rsec"><div class="rlabel">🤖 ${U.labels.ai}</div><div class="rtext">${r.aiOpportunity}</div></div>
+    <div class="divider"></div>
+    <div class="rsec"><div class="rlabel">🚀 ${U.labels.step}</div><div class="rtext" style="color:white;font-weight:500;font-size:15px">${r.firstStep}</div></div>
+    ${outreachMsg?`
+    <div class="divider"></div>
+    <div class="rsec">
+      <div class="rlabel">${U.labels.outreach}</div>
+      <div style="font-size:12px;color:var(--muted);margin-bottom:4px">${outreachLabel}</div>
+      <div class="outreach-box">
+        <div class="outreach-msg" id="${oid}">${outreachMsg}</div>
+        <button class="copy-btn" onclick="doCopy('${oid}',this)">📋 ${U.copy}</button>
+      </div>
+    </div>`:''}
+  </div>
+  <br><button class="restart-btn" onclick="doRestart()">${U.restart}</button>`;
+
+  const wrap=document.createElement('div');wrap.className='msg ai';wrap.style.animationDelay='.15s';
+  wrap.innerHTML=`<div class="av ai-av">✦</div><div style="flex:1">${html}</div>`;
+  chat.appendChild(wrap);scrollBot();
+  startChat();
+}
+
+function startChat(){
+  const U=UI[lang];
+  chatHistory=[];mode='chat';
+  const hint=document.createElement('div');hint.className='msg ai';
+  hint.innerHTML=`<div class="av ai-av">✦</div><div class="chat-hint">${U.chatHint}</div>`;
+  chat.appendChild(hint);scrollBot();
+  inp.placeholder=U.phChat;inp.disabled=false;btn.disabled=false;inp.focus();
+}
+
+async function handleChat(val){
+  disableInp();inp.value='';inp.style.height='auto';
+  addUser(val);showThink();
+  chatHistory.push({role:'user',content:val});
+  const sysMsg=lang==='en'
+    ?`You are NicheIQ, a friendly freelance business advisor. The user's niche is: "${lastResult?.niche?.title||'analyzed'}". Answer follow-up questions helpfully in under 100 words.`
+    :`Aap NicheIQ hain, ek dost freelance business advisor. User ki niche hai: "${lastResult?.niche?.title||'analyzed'}". Sawalaat ka madadgar jawab dein, 100 words se kam mein. Roman Urdu mein jawab dein.`;
+  try{
+    const reply=await callAI(sysMsg,chatHistory,400);
+    chatHistory.push({role:'assistant',content:reply});
+    rmThink();addAI(reply);
+  }catch(e){
+    rmThink();addAI(lang==='en'?"Sorry, couldn't connect. Try again.":"Maafi, connection fail hua. Dobara try karein.");
+  }
+  inp.disabled=false;btn.disabled=false;inp.focus();
+}
+
+function doCopy(id,el){
+  const U=UI[lang];
+  navigator.clipboard.writeText(document.getElementById(id).textContent).then(()=>{
+    el.textContent=U.copied;el.classList.add('ok');
+    setTimeout(()=>{el.textContent='📋 '+U.copy;el.classList.remove('ok')},2000);
+  });
+}
+
+function doRestart(){
+  curQ=0;answers={};portfolioDesc='';lastResult=null;chatHistory=[];mode='quiz';
+  chat.innerHTML='';progBar.style.width='0%';progWrap.classList.remove('on');
+  inp.value='';inp.style.height='auto';inp.placeholder=UI[lang].ph;disableInp();
+  setTimeout(()=>askQ(0),400);
+}
+
+window.onload=()=>setTimeout(()=>askQ(0),600);
+</script>
+</body>
+</html>
