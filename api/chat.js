@@ -8,36 +8,33 @@ export default async function handler(req, res) {
   const { system, messages, max_tokens } = req.body;
 
   try {
-    // Convert messages to Gemini format
-    const contents = messages.map((msg, idx) => {
-      let role = msg.role === 'user' ? 'user' : 'model';
-      
-      // Add system message to first user message if provided
-      let text = msg.content;
-      if (system && idx === 0 && msg.role === 'user') {
-        text = `${system}\n\n${msg.content}`;
-      }
-      
+    // Convert messages to Groq format (OpenAI compatible)
+    const groqMessages = messages.map((msg) => {
+      let role = msg.role === 'user' ? 'user' : 'assistant';
       return {
         role,
-        parts: [{ text }]
+        content: msg.content
       };
     });
 
-    const response = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro:generateContent?key=${process.env.GOOGLE_API_KEY}`,
-      {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          contents,
-          generationConfig: {
-            maxOutputTokens: max_tokens || 1600,
-            temperature: 0.7
-          }
-        })
-      }
-    );
+    // Add system message if provided
+    const allMessages = system 
+      ? [{ role: 'system', content: system }, ...groqMessages]
+      : groqMessages;
+
+    const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${process.env.GROQ_API_KEY}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        model: 'mixtral-8x7b-32768',
+        messages: allMessages,
+        max_tokens: max_tokens || 1600,
+        temperature: 0.7
+      })
+    });
 
     const data = await response.json();
     
@@ -45,7 +42,7 @@ export default async function handler(req, res) {
       return res.status(500).json({ error: data.error.message });
     }
     
-    const text = data.candidates?.[0]?.content?.parts?.[0]?.text || '';
+    const text = data.choices?.[0]?.message?.content || '';
     return res.status(200).json({ result: text });
   } catch (e) {
     return res.status(500).json({ error: e.message });
