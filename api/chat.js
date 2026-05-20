@@ -29,7 +29,7 @@ export default async function handler(req, res) {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        model: 'llama-3.1-70b-versatile',
+        model: 'llama-3.3-70b-versatile',
         messages: allMessages,
         max_tokens: max_tokens || 1600,
         temperature: 0.7
