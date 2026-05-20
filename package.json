@@ -3,10 +3,5 @@
   "name": "nicheiq",
   "version": "1.0.0",
   "description": "AI-Powered Niche Discovery Tool",
-  "private": true,
-  "scripts": {
-    "dev": "vercel dev",
-    "build": "next build",
-    "start": "next start"
-  }
+  "private": true
 }
