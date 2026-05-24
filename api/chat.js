@@ -43,7 +43,15 @@ export default async function handler(req, res) {
     }
     
     const text = data.choices?.[0]?.message?.content || '';
-    return res.status(200).json({ result: text });
+    
+    // Try to parse as JSON if it looks like JSON
+    try {
+      const parsed = JSON.parse(text);
+      return res.status(200).json({ result: parsed });
+    } catch (e) {
+      // If not valid JSON, return as plain text
+      return res.status(200).json({ result: text });
+    }
   } catch (e) {
     return res.status(500).json({ error: e.message });
   }
