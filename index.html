@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>NicheIQ — Find Your Niche</title>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#0a0a0f;--surface:#111118;--card:#16161f;--border:#2a2a3a;--accent:#7c5cfc;--a2:#fc5c7d;--a3:#5cf0c8;--a4:#fcb45c;--text:#f0eeff;--muted:#7a7a9a;--glow:rgba(124,92,252,0.25)}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -16,7 +16,7 @@ body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(
 .lang-btn.active{background:linear-gradient(135deg,var(--accent),#5a3cc4);color:white;box-shadow:0 2px 10px var(--glow)}
 .container{max-width:780px;margin:0 auto;padding:0 20px 80px;position:relative;z-index:1}
 header{padding:24px 0 22px;text-align:center}
-.badge{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,rgba(124,92,252,0.2),rgba(92,240,200,0.1));border:1px solid rgba(124,92,252,0.3);border-radius:100px;padding:6px 16px;font-size:11px;font-weight:700;color:var(--a3);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:16px;font-family:'Outfit',sans-serif}
+.badge{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,rgba(124,92,252,0.2),rgba(92,240,200,0.1));border:1px solid rgba(124,92,252,0.3);border-radius:100px;padding:6px 16px;font-size:11px;font-weight:600;color:var(--a3);letter-spacing:1px;text-transform:uppercase;margin-bottom:16px}
 .dot{width:6px;height:6px;background:var(--a3);border-radius:50%;animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(0.8)}}
 h1{font-family:'Outfit',sans-serif;font-size:clamp(28px,6vw,48px);font-weight:800;line-height:1.1;background:linear-gradient(135deg,#fff 30%,var(--accent) 70%,var(--a2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:10px}
@@ -44,78 +44,6 @@ h1{font-family:'Outfit',sans-serif;font-size:clamp(28px,6vw,48px);font-weight:80
 .think span:nth-child(2){animation-delay:.2s}.think span:nth-child(3){animation-delay:.4s}
 @keyframes bounce{0%,80%,100%{transform:translateY(0);opacity:.4}40%{transform:translateY(-6px);opacity:1}}
 .result-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:22px;margin-top:6px}
-.score-card{background:linear-gradient(135deg,rgba(124,92,252,0.08),rgba(252,92,125,0.05));border:1px solid rgba(124,92,252,0.2);border-radius:16px;padding:18px;margin-top:10px}
-.score-overall{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,0.06)}
-.score-grade{font-family:'Outfit',sans-serif;font-size:36px;font-weight:900;color:white;line-height:1}
-.score-grade span{font-size:14px;font-weight:500;color:var(--muted);display:block;margin-top:2px}
-.score-summary{font-size:13px;color:#b0aece;line-height:1.6;max-width:70%;text-align:right}
-.score-metric{margin-bottom:12px}.score-metric:last-child{margin-bottom:0}
-.score-metric-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
-.score-metric-name{font-size:12.5px;font-weight:600;color:var(--soft,#a8a8cc)}
-.score-metric-val{font-family:'Outfit',sans-serif;font-size:12px;font-weight:700;padding:2px 10px;border-radius:100px}
-.sv-high{background:rgba(92,240,200,0.15);color:var(--a3)}
-.sv-mod{background:rgba(252,180,92,0.15);color:var(--a4)}
-.sv-low{background:rgba(252,92,125,0.15);color:var(--a2)}
-.score-bar-track{height:6px;background:rgba(255,255,255,0.07);border-radius:99px;overflow:hidden}
-.score-bar-fill{height:100%;border-radius:99px;transition:width 1s cubic-bezier(.4,0,.2,1)}
-.score-metric-reason{font-size:11.5px;color:var(--muted);margin-top:4px;line-height:1.5}
-.comp-card{background:linear-gradient(135deg,rgba(252,180,92,0.07),rgba(124,92,252,0.05));border:1px solid rgba(252,180,92,0.18);border-radius:16px;padding:18px;margin-top:10px}
-.comp-item{padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.05)}
-.comp-item:last-child{border-bottom:none}
-.comp-item-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
-.comp-name{font-family:'Outfit',sans-serif;font-size:14px;font-weight:700;color:white}
-.comp-badge{font-size:11px;font-weight:600;padding:3px 10px;border-radius:100px}
-.cb-high{background:rgba(252,92,125,0.15);color:#ff7fa0}
-.cb-med{background:rgba(252,180,92,0.15);color:var(--a4)}
-.cb-low{background:rgba(92,240,200,0.15);color:var(--a3)}
-.comp-desc{font-size:13px;color:#a8a8c8;line-height:1.6;margin-bottom:5px}
-.comp-gap{font-size:12.5px;color:var(--a3);font-weight:500}
-.comp-gap::before{content:"💡 Gap: "}
-.comp-summary{background:rgba(124,92,252,0.08);border:1px solid rgba(124,92,252,0.15);border-radius:10px;padding:12px 14px;margin-top:14px;font-size:13.5px;color:#c8c4e8;line-height:1.65}
-.price-card{background:linear-gradient(135deg,rgba(92,240,200,0.06),rgba(124,92,252,0.05));border:1px solid rgba(92,240,200,0.15);border-radius:16px;padding:18px;margin-top:10px}
-.price-tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px}
-.price-tier{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:14px 12px;text-align:center}
-.price-tier-name{font-family:'Outfit',sans-serif;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px}
-.pt-beginner .price-tier-name{color:#a88fff}
-.pt-intermediate .price-tier-name{color:var(--a4)}
-.pt-expert .price-tier-name{color:var(--a3)}
-.price-amount{font-family:'Outfit',sans-serif;font-size:20px;font-weight:800;color:white;line-height:1;margin-bottom:3px}
-.price-unit{font-size:11px;color:var(--muted);margin-bottom:8px}
-.price-hourly{font-size:12px;color:var(--soft);padding-top:8px;border-top:1px solid rgba(255,255,255,0.06)}
-.price-tip{background:rgba(92,240,200,0.07);border:1px solid rgba(92,240,200,0.15);border-radius:10px;padding:11px 14px;font-size:13px;color:#b0eed8;line-height:1.6}
-.price-tip::before{content:"💡 ";font-size:14px}
-@media(max-width:480px){.price-tiers{grid-template-columns:1fr}}
-.plan-card{background:linear-gradient(135deg,rgba(124,92,252,0.07),rgba(92,240,200,0.04));border:1px solid rgba(124,92,252,0.18);border-radius:16px;padding:18px;margin-top:10px}
-.plan-week{margin-bottom:16px}.plan-week:last-child{margin-bottom:0}
-.plan-week-header{display:flex;align-items:center;gap:10px;margin-bottom:10px}
-.plan-week-badge{font-family:'Outfit',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:4px 12px;border-radius:100px;white-space:nowrap}
-.pw-1{background:rgba(124,92,252,0.18);color:#b39fff}
-.pw-2{background:rgba(252,180,92,0.18);color:var(--a4)}
-.pw-3{background:rgba(92,240,200,0.18);color:var(--a3)}
-.pw-4{background:rgba(252,92,125,0.18);color:#ff9fb8}
-.plan-week-title{font-family:'Outfit',sans-serif;font-size:14px;font-weight:700;color:white}
-.plan-tasks{display:flex;flex-direction:column;gap:6px}
-.plan-task{display:flex;align-items:flex-start;gap:10px;font-size:13.5px;color:#c0bce0;line-height:1.55}
-.plan-task-num{width:20px;height:20px;border-radius:6px;background:rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:var(--muted);flex-shrink:0;margin-top:1px}
-.plan-goal{background:rgba(92,240,200,0.07);border:1px solid rgba(92,240,200,0.15);border-radius:10px;padding:11px 14px;margin-top:14px;font-size:13px;color:#b0eed8;line-height:1.6}
-.plan-goal::before{content:"🎯 Goal: ";font-weight:600}
-.content-card{background:linear-gradient(135deg,rgba(252,92,125,0.06),rgba(124,92,252,0.05));border:1px solid rgba(252,92,125,0.15);border-radius:16px;padding:18px;margin-top:10px}
-.content-platforms{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
-.content-platform-tab{padding:5px 14px;border-radius:100px;font-family:'Outfit',sans-serif;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;cursor:pointer;border:1px solid transparent;transition:all .2s}
-.content-platform-tab.active{background:rgba(252,92,125,0.18);border-color:rgba(252,92,125,0.3);color:#ff9fb8}
-.content-platform-tab:not(.active){background:rgba(255,255,255,0.04);border-color:rgba(255,255,255,0.08);color:var(--muted)}
-.content-ideas-list{display:none}.content-ideas-list.active{display:flex;flex-direction:column;gap:8px}
-.content-idea{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:10px;padding:12px 14px;transition:border-color .2s}
-.content-idea:hover{border-color:rgba(252,92,125,0.25)}
-.ci-type{font-family:'Outfit',sans-serif;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:5px}
-.ci-type-hook{color:#ff9fb8}
-.ci-type-edu{color:var(--a3)}
-.ci-type-story{color:var(--a4)}
-.ci-type-trend{color:#a88fff}
-.ci-title{font-size:14px;color:white;font-weight:500;line-height:1.5;margin-bottom:4px}
-.ci-why{font-size:12px;color:var(--muted);line-height:1.5}
-.content-trend-note{background:rgba(124,92,252,0.07);border:1px solid rgba(124,92,252,0.15);border-radius:10px;padding:11px 14px;margin-top:14px;font-size:13px;color:#c8c4e8;line-height:1.6}
-.content-trend-note::before{content:"📈 Trend: ";font-weight:600;color:#a88fff}
 .rsec{margin-bottom:20px}.rsec:last-child{margin-bottom:0}
 .rlabel{font-family:'Outfit',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--a3);margin-bottom:8px;display:flex;align-items:center;gap:8px}
 .rlabel::after{content:'';flex:1;height:1px;background:var(--border)}
@@ -198,28 +126,7 @@ const UI = {
       problems:"Their Problems", solutions:"Your Solutions", ai:"AI Era Opportunity",
       step:"First Step This Week", outreach:"✉️ Your Client Outreach Message",
       outreachPortfolio:"Personalized using your portfolio — ready to send",
-      outreachGeneric:"Niche-specific — ready to send",
-      scoreCard:"📊 Niche Score Card",
-      scoreMetrics:["Market Demand","Competition Level","Income Potential","AI Disruption Risk"],
-      scoreOverall:"Overall Verdict",
-      compLabel:"🔍 Competitor Analysis",
-      compAnalyzing:"Analyzing your competitors and market gaps...",
-      compGapLabel:"Your Winning Angle",
-      compThreats:"Threat Level",
-      priceLabel:"💰 Pricing Guide",
-      priceAnalyzing:"Building your personalized pricing guide...",
-      priceTiers:["Beginner","Intermediate","Expert"],
-      pricePerProject:"per project",
-      pricePerHour:"per hour",
-      priceTip:"Pricing Tip",
-      planLabel:"📅 30-Day Action Plan",
-      planAnalyzing:"Building your personalized 30-day action plan...",
-      planWeeks:["Week 1","Week 2","Week 3","Week 4"],
-      planGoalLabel:"End Goal",
-      contentLabel:"💡 Content Ideas Generator",
-      contentAnalyzing:"Generating trending content ideas for your niche...",
-      contentPlatforms:["LinkedIn","YouTube","Instagram","Twitter/X"],
-      contentTypes:{"hook":"Hook","edu":"Educational","story":"Story","trend":"Trending"}
+      outreachGeneric:"Niche-specific — ready to send"
     },
     portfolioHasQ:"You have portfolio work — great! Want AI to personalize your outreach using your actual work?",
     portfolioOptYes:"Yes — I'll describe my work",
@@ -252,28 +159,7 @@ const UI = {
       problems:"Un ki mushkilaat", solutions:"Aapke solutions", ai:"AI Era mauqa",
       step:"Pehla qadam (is hafte)", outreach:"✉️ Aapka Client Outreach Message",
       outreachPortfolio:"Aapke portfolio ke mutabiq — bhejne ke liye tayyar",
-      outreachGeneric:"Niche ke mutabiq — bhejne ke liye tayyar",
-      scoreCard:"📊 Niche Score Card",
-      scoreMetrics:["Market Demand","Competition Level","Income Potential","AI Disruption Risk"],
-      scoreOverall:"Overall Verdict",
-      compLabel:"🔍 Competitor Analysis",
-      compAnalyzing:"Competitors aur market gaps analyze ho rahe hain...",
-      compGapLabel:"Aapka Winning Angle",
-      compThreats:"Threat Level",
-      priceLabel:"💰 Pricing Guide",
-      priceAnalyzing:"Aapke liye personalized pricing guide ban rahi hai...",
-      priceTiers:["Beginner","Intermediate","Expert"],
-      pricePerProject:"per project",
-      pricePerHour:"per hour",
-      priceTip:"Pricing Tip",
-      planLabel:"📅 30-Day Action Plan",
-      planAnalyzing:"Aapka personalized 30-day action plan ban raha hai...",
-      planWeeks:["Hafta 1","Hafta 2","Hafta 3","Hafta 4"],
-      planGoalLabel:"End Goal",
-      contentLabel:"💡 Content Ideas Generator",
-      contentAnalyzing:"Aapki niche ke liye trending content ideas generate ho rahe hain...",
-      contentPlatforms:["LinkedIn","YouTube","Instagram","Twitter/X"],
-      contentTypes:{"hook":"Hook","edu":"Educational","story":"Story","trend":"Trending"}
+      outreachGeneric:"Niche ke mutabiq — bhejne ke liye tayyar"
     },
     portfolioHasQ:"Aapke paas portfolio hai — zabardast! Kya AI aapke asli kaam ke mutabiq outreach message likhe?",
     portfolioOptYes:"Haan — main apna kaam describe karunga",
@@ -454,10 +340,10 @@ User profile:
 - Goal: ${answers.goal}
 
 Return ONLY a raw JSON object. No markdown, no backticks, no explanation.
-{"niche":{"title":"Very specific niche title","description":"2 sentences about this niche"},"whyThisNiche":"2 sentences why this matches their skills","targetAudience":{"primary":"1 sentence describing ideal client","segments":["seg1","seg2","seg3","seg4"]},"problems":["p1","p2","p3","p4","p5"],"solutions":["s1","s2","s3","s4"],"aiOpportunity":"2 sentences naming specific AI tools","firstStep":"1 concrete action this week","scoreCard":{"marketDemand":{"score":85,"label":"High","reason":"1 short sentence why"},"competitionLevel":{"score":40,"label":"Moderate","reason":"1 short sentence why"},"incomePotential":{"score":78,"label":"Strong","reason":"1 short sentence why"},"aiRisk":{"score":25,"label":"Low","reason":"1 short sentence why"},"overall":{"score":72,"grade":"B+","summary":"1 sentence overall verdict"}}}`;
+{"niche":{"title":"Very specific niche title","description":"2 sentences about this niche"},"whyThisNiche":"2 sentences why this matches their skills","targetAudience":{"primary":"1 sentence describing ideal client","segments":["seg1","seg2","seg3","seg4"]},"problems":["p1","p2","p3","p4","p5"],"solutions":["s1","s2","s3","s4"],"aiOpportunity":"2 sentences naming specific AI tools","firstStep":"1 concrete action this week"}`;
 
   try{
-    const raw=await callAI(null,[{role:'user',content:nichePrompt}],2400);
+    const raw=await callAI(null,[{role:'user',content:nichePrompt}],1500);
     const s=raw.indexOf('{'),e=raw.lastIndexOf('}');
     if(s===-1||e===-1)throw new Error('Invalid response');
     const result=JSON.parse(raw.slice(s,e+1));
@@ -498,344 +384,13 @@ Return ONLY the message text. Nothing else.`;
 
   try{
     const outreach=await callAI(null,[{role:'user',content:outreachPrompt}],600);
-    rmThink();await doCompetitor(result,outreach.trim(),hasPortfolio);
+    rmThink();showResult(result,outreach.trim(),hasPortfolio);
   }catch(err){
-    rmThink();console.error(err);await doCompetitor(result,'',false);
+    rmThink();console.error(err);showResult(result,'',false);
   }
 }
 
-async function doCompetitor(result, outreachMsg, isPortfolioBased){
-  const U=UI[lang];
-  const langNote=lang==='en'?'Respond in English.':'Respond in Roman Urdu mixed with English.';
-  addAI(U.compAnalyzing); await wait(300); showThink();
-
-  const compPrompt=`You are a freelance market analyst. ${langNote}
-
-Niche: ${result.niche.title}
-Skill: ${answers.skill}
-Target audience: ${result.targetAudience.primary}
-
-Return ONLY a raw JSON object. No markdown, no backticks.
-{"competitors":[{"name":"Competitor type 1 (e.g. Fiverr generalists)","threatLevel":"High","description":"1 sentence what they do","gap":"1 sentence how user can differentiate vs this competitor"},{"name":"Competitor type 2","threatLevel":"Medium","description":"1 sentence","gap":"1 sentence differentiation"},{"name":"Competitor type 3","threatLevel":"Low","description":"1 sentence","gap":"1 sentence differentiation"}],"winningAngle":"2 sentences — the single most powerful way for this freelancer to stand out from ALL competitors given their specific skills"}`;
-
-  try{
-    const raw=await callAI(null,[{role:'user',content:compPrompt}],900);
-    const s=raw.indexOf('{'),e=raw.lastIndexOf('}');
-    let compData=null;
-    if(s!==-1&&e!==-1){try{compData=JSON.parse(raw.slice(s,e+1));}catch(e2){compData=null;}}
-    rmThink();
-    await doPricing(result, outreachMsg, isPortfolioBased, compData);
-  }catch(err){
-    rmThink();console.error(err);
-    await doPricing(result, outreachMsg, isPortfolioBased, null);
-  }
-}
-
-async function doPricing(result, outreachMsg, isPortfolioBased, compData){
-  const U=UI[lang];
-  const langNote=lang==='en'?'Respond in English.':'Respond in Roman Urdu mixed with English.';
-  addAI(U.priceAnalyzing); await wait(300); showThink();
-
-  const pricePrompt=`You are a freelance pricing expert. ${langNote}
-
-Niche: ${result.niche.title}
-Skill: ${answers.skill}
-Experience: ${answers.experience}
-Target client: ${result.targetAudience.primary}
-
-Return ONLY a raw JSON object. No markdown, no backticks.
-{"beginner":{"projectMin":150,"projectMax":400,"hourlyMin":8,"hourlyMax":18},"intermediate":{"projectMin":400,"projectMax":1200,"hourlyMin":18,"hourlyMax":45},"expert":{"projectMin":1200,"projectMax":4000,"hourlyMin":45,"hourlyMax":120},"currency":"USD","tip":"1 specific actionable tip on how to charge more in this exact niche — mention a real tactic like retainers, packages, or value-based pricing"}
-
-Use realistic market rates for the specific niche and region. All values as numbers only.`;
-
-  try{
-    const raw=await callAI(null,[{role:'user',content:pricePrompt}],600);
-    const s=raw.indexOf('{'),e=raw.lastIndexOf('}');
-    let priceData=null;
-    if(s!==-1&&e!==-1){try{priceData=JSON.parse(raw.slice(s,e+1));}catch(e2){priceData=null;}}
-    rmThink();
-    await do30DayPlan(result, outreachMsg, isPortfolioBased, compData, priceData);
-  }catch(err){
-    rmThink();console.error(err);
-    await do30DayPlan(result, outreachMsg, isPortfolioBased, compData, null);
-  }
-}
-
-async function do30DayPlan(result, outreachMsg, isPortfolioBased, compData, priceData){
-  const U=UI[lang];
-  const langNote=lang==='en'?'Respond in English.':'Respond in Roman Urdu mixed with English. Keep tasks short and clear.';
-  addAI(U.planAnalyzing); await wait(300); showThink();
-
-  const planPrompt=`You are a freelance business coach. ${langNote}
-
-Niche: ${result.niche.title}
-Skill: ${answers.skill}
-Experience: ${answers.experience}
-Portfolio: ${answers.portfolio}
-Goal: ${answers.goal}
-
-Return ONLY a raw JSON object. No markdown, no backticks.
-{"weeks":[{"week":1,"title":"Foundation","tasks":["task 1","task 2","task 3"]},{"week":2,"title":"Build","tasks":["task 1","task 2","task 3"]},{"week":3,"title":"Outreach","tasks":["task 1","task 2","task 3"]},{"week":4,"title":"Convert","tasks":["task 1","task 2","task 3"]}],"endGoal":"1 sentence describing the concrete result they should have after 30 days"}
-
-Rules:
-- Each task must be specific and actionable — no vague advice
-- Tasks must be realistic for their experience level
-- Week 1: setup/foundation, Week 2: portfolio/content, Week 3: outreach/pitching, Week 4: follow-up/closing
-- endGoal must be concrete (e.g. "Land first paying client at $300+ per project")`;
-
-  try{
-    const raw=await callAI(null,[{role:'user',content:planPrompt}],900);
-    const s=raw.indexOf('{'),e=raw.lastIndexOf('}');
-    let planData=null;
-    if(s!==-1&&e!==-1){try{planData=JSON.parse(raw.slice(s,e+1));}catch(e2){planData=null;}}
-    rmThink();
-    await doContentIdeas(result, outreachMsg, isPortfolioBased, compData, priceData, planData);
-  }catch(err){
-    rmThink();console.error(err);
-    await doContentIdeas(result, outreachMsg, isPortfolioBased, compData, priceData, null);
-  }
-}
-
-async function doContentIdeas(result, outreachMsg, isPortfolioBased, compData, priceData, planData){
-  const U=UI[lang];
-  const langNote=lang==='en'?'Respond in English.':'Respond in Roman Urdu mixed with English.';
-  addAI(U.contentAnalyzing); await wait(300); showThink();
-
-  const contentPrompt=`You are a content strategy expert who knows current 2025 social media trends. ${langNote}
-
-Niche: ${result.niche.title}
-Skill: ${answers.skill}
-Target audience: ${result.targetAudience.primary}
-Their problems: ${(result.problems||[]).slice(0,3).join('; ')}
-
-Generate platform-specific content ideas based on CURRENT trending formats and what gets engagement in 2025.
-
-Return ONLY a raw JSON object. No markdown, no backticks.
-{"platforms":{"LinkedIn":[{"type":"hook","title":"post title or hook","why":"why this works for this niche"},{"type":"edu","title":"post title","why":"why this works"},{"type":"story","title":"post title","why":"why this works"}],"YouTube":[{"type":"edu","title":"video title","why":"why this works"},{"type":"trend","title":"video title","why":"why this works"},{"type":"story","title":"video title","why":"why this works"}],"Instagram":[{"type":"hook","title":"reel/post idea","why":"why this works"},{"type":"edu","title":"carousel idea","why":"why this works"},{"type":"trend","title":"reel idea","why":"why this works"}],"Twitter/X":[{"type":"hook","title":"tweet thread idea","why":"why this works"},{"type":"edu","title":"thread idea","why":"why this works"},{"type":"trend","title":"tweet idea","why":"why this works"}]},"trendNote":"1 sentence about the single biggest content trend in 2025 relevant to this niche"}
-
-Rules:
-- Titles must be specific to the niche — no generic advice
-- Each idea must be directly relevant to the target audience problems
-- Focus on formats that are currently trending in 2025: short-form video, carousel posts, case studies, before/after, behind-the-scenes`;
-
-  try{
-    const raw=await callAI(null,[{role:'user',content:contentPrompt}],1200);
-    const s=raw.indexOf('{'),e=raw.lastIndexOf('}');
-    let contentData=null;
-    if(s!==-1&&e!==-1){try{contentData=JSON.parse(raw.slice(s,e+1));}catch(e2){contentData=null;}}
-    rmThink();
-    showResult(result, outreachMsg, isPortfolioBased, compData, priceData, planData, contentData);
-  }catch(err){
-    rmThink();console.error(err);
-    showResult(result, outreachMsg, isPortfolioBased, compData, priceData, planData, null);
-  }
-}
-
-function renderContentIdeas(content, U) {
-  if(!content||!content.platforms) return '';
-  const platforms = U.labels.contentPlatforms;
-  const typeMap = U.labels.contentTypes;
-
-  function typeClass(t){
-    if(t==='hook') return 'ci-type-hook';
-    if(t==='edu')  return 'ci-type-edu';
-    if(t==='story')return 'ci-type-story';
-    return 'ci-type-trend';
-  }
-
-  const tabsHtml = platforms.map((p,i)=>
-    `<button class="content-platform-tab${i===0?' active':''}"
-      onclick="switchContentTab(this,'content-pane-${i}')">${p}</button>`
-  ).join('');
-
-  const panesHtml = platforms.map((p,i)=>{
-    const ideas = content.platforms[p] || [];
-    const ideasHtml = ideas.map(idea=>`
-      <div class="content-idea">
-        <div class="ci-type ${typeClass(idea.type)}">${typeMap[idea.type]||idea.type}</div>
-        <div class="ci-title">${idea.title||''}</div>
-        ${idea.why?`<div class="ci-why">${idea.why}</div>`:''}
-      </div>`).join('');
-    return `<div class="content-ideas-list${i===0?' active':''}" id="content-pane-${i}">${ideasHtml}</div>`;
-  }).join('');
-
-  return `
-    <div class="divider"></div>
-    <div class="rsec">
-      <div class="rlabel">${U.labels.contentLabel}</div>
-      <div class="content-card">
-        <div class="content-platforms">${tabsHtml}</div>
-        ${panesHtml}
-        ${content.trendNote?`<div class="content-trend-note">${content.trendNote}</div>`:''}
-      </div>
-    </div>`;
-}
-
-function switchContentTab(btn, paneId){
-  btn.closest('.content-card').querySelectorAll('.content-platform-tab').forEach(t=>t.classList.remove('active'));
-  btn.closest('.content-card').querySelectorAll('.content-ideas-list').forEach(p=>p.classList.remove('active'));
-  btn.classList.add('active');
-  const pane=document.getElementById(paneId);
-  if(pane) pane.classList.add('active');
-}
-
-function render30DayPlan(plan, U) {
-  if(!plan||!plan.weeks) return '';
-  const badgeCls = ['pw-1','pw-2','pw-3','pw-4'];
-  const weekLabels = U.labels.planWeeks;
-
-  const weeksHtml = plan.weeks.map((w,i) => {
-    const tasks = (w.tasks||[]).map((t,ti)=>`
-      <div class="plan-task">
-        <span class="plan-task-num">${ti+1}</span>
-        <span>${t}</span>
-      </div>`).join('');
-    return `
-      <div class="plan-week">
-        <div class="plan-week-header">
-          <span class="plan-week-badge ${badgeCls[i]||'pw-1'}">${weekLabels[i]||'Week '+(i+1)}</span>
-          <span class="plan-week-title">${w.title||''}</span>
-        </div>
-        <div class="plan-tasks">${tasks}</div>
-      </div>`;
-  }).join('');
-
-  return `
-    <div class="divider"></div>
-    <div class="rsec">
-      <div class="rlabel">${U.labels.planLabel}</div>
-      <div class="plan-card">
-        ${weeksHtml}
-        ${plan.endGoal?`<div class="plan-goal">${plan.endGoal}</div>`:''}
-      </div>
-    </div>`;
-}
-
-function renderPricing(p, U) {
-  if(!p) return '';
-  const tiers = [
-    {key:'beginner',    cls:'pt-beginner',    idx:0},
-    {key:'intermediate',cls:'pt-intermediate', idx:1},
-    {key:'expert',      cls:'pt-expert',       idx:2}
-  ];
-  const cur = p.currency || 'USD';
-  const sym = cur==='USD'?'$':cur==='GBP'?'£':cur==='EUR'?'€':'$';
-
-  const tiersHtml = tiers.map(t => {
-    const d = p[t.key]; if(!d) return '';
-    return `<div class="price-tier ${t.cls}">
-      <div class="price-tier-name">${U.labels.priceTiers[t.idx]}</div>
-      <div class="price-amount">${sym}${d.projectMin}–${sym}${d.projectMax}</div>
-      <div class="price-unit">${U.labels.pricePerProject}</div>
-      <div class="price-hourly">${sym}${d.hourlyMin}–${sym}${d.hourlyMax} ${U.labels.pricePerHour}</div>
-    </div>`;
-  }).join('');
-
-  return `
-    <div class="divider"></div>
-    <div class="rsec">
-      <div class="rlabel">${U.labels.priceLabel}</div>
-      <div class="price-card">
-        <div class="price-tiers">${tiersHtml}</div>
-        ${p.tip?`<div class="price-tip">${p.tip}</div>`:''}
-      </div>
-    </div>`;
-}
-
-function renderCompetitor(comp, U) {
-  if(!comp||!comp.competitors) return '';
-  function threatClass(t){
-    const l=(t||'').toLowerCase();
-    if(l.includes('high')) return 'cb-high';
-    if(l.includes('med')) return 'cb-med';
-    return 'cb-low';
-  }
-  const items = comp.competitors.map(c=>`
-    <div class="comp-item">
-      <div class="comp-item-top">
-        <span class="comp-name">${c.name||''}</span>
-        <span class="comp-badge ${threatClass(c.threatLevel)}">${U.compThreats}: ${c.threatLevel||''}</span>
-      </div>
-      <div class="comp-desc">${c.description||''}</div>
-      ${c.gap?`<div class="comp-gap">${c.gap}</div>`:''}
-    </div>`).join('');
-  return `
-    <div class="divider"></div>
-    <div class="rsec">
-      <div class="rlabel">${U.labels.compLabel}</div>
-      <div class="comp-card">
-        ${items}
-        ${comp.winningAngle?`<div class="comp-summary"><strong>${U.labels.compGapLabel}:</strong> ${comp.winningAngle}</div>`:''}
-      </div>
-    </div>`;
-}
-
-function renderScoreCard(sc, U) {
-  const metrics = [
-    { key:'marketDemand',   color:'#5cf0c8', riskInverse:false },
-    { key:'competitionLevel', color:'#fcb45c', riskInverse:true  },
-    { key:'incomePotential',color:'#7c5cfc', riskInverse:false },
-    { key:'aiRisk',         color:'#fc5c7d', riskInverse:true  }
-  ];
-
-  function barColor(score, isRisk) {
-    if (isRisk) {
-      if (score <= 30) return '#5cf0c8';
-      if (score <= 60) return '#fcb45c';
-      return '#fc5c7d';
-    } else {
-      if (score >= 70) return '#5cf0c8';
-      if (score >= 45) return '#fcb45c';
-      return '#fc5c7d';
-    }
-  }
-
-  function labelClass(label) {
-    const l = (label||'').toLowerCase();
-    if (l.includes('high')||l.includes('strong')||l.includes('low')) return 'sv-high';
-    if (l.includes('mod')||l.includes('medium')) return 'sv-mod';
-    return 'sv-low';
-  }
-
-  const metricsHtml = metrics.map((m, i) => {
-    const data = sc[m.key];
-    if (!data) return '';
-    const fillColor = barColor(data.score, m.riskInverse);
-    const score = Math.min(100, Math.max(0, data.score));
-    return `
-      <div class="score-metric">
-        <div class="score-metric-top">
-          <span class="score-metric-name">${U.labels.scoreMetrics[i]}</span>
-          <span class="score-metric-val ${labelClass(data.label)}">${data.label} · ${score}%</span>
-        </div>
-        <div class="score-bar-track">
-          <div class="score-bar-fill" style="width:${score}%;background:${fillColor}"></div>
-        </div>
-        ${data.reason ? `<div class="score-metric-reason">${data.reason}</div>` : ''}
-      </div>`;
-  }).join('');
-
-  const overall = sc.overall || {};
-  const grade = overall.grade || '—';
-  const gradeColor = (overall.score||0) >= 70 ? '#5cf0c8' : (overall.score||0) >= 50 ? '#fcb45c' : '#fc5c7d';
-
-  return `
-    <div class="divider"></div>
-    <div class="rsec">
-      <div class="rlabel">${U.labels.scoreCard}</div>
-      <div class="score-card">
-        <div class="score-overall">
-          <div>
-            <div class="score-grade" style="color:${gradeColor}">${grade}<span>${U.labels.scoreOverall}</span></div>
-          </div>
-          <div class="score-summary">${overall.summary || ''}</div>
-        </div>
-        ${metricsHtml}
-      </div>
-    </div>`;
-}
-
-function showResult(r,outreachMsg,isPortfolioBased,compData=null,priceData=null,planData=null,contentData=null){
+function showResult(r,outreachMsg,isPortfolioBased){
   const U=UI[lang];
   addAI(`<strong>${U.resultIntro}</strong>`,true);
   const oid='om-'+Date.now();
@@ -875,11 +430,6 @@ function showResult(r,outreachMsg,isPortfolioBased,compData=null,priceData=null,
         <button class="copy-btn" onclick="doCopy('${oid}',this)">📋 ${U.copy}</button>
       </div>
     </div>`:''}
-    ${compData ? renderCompetitor(compData, U) : ''}
-    ${priceData ? renderPricing(priceData, U) : ''}
-    ${planData ? render30DayPlan(planData, U) : ''}
-    ${contentData ? renderContentIdeas(contentData, U) : ''}
-    ${r.scoreCard ? renderScoreCard(r.scoreCard, U) : ''}
   </div>
   <br><button class="restart-btn" onclick="doRestart()">${U.restart}</button>`;
 
