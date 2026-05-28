@@ -9,17 +9,17 @@
 :root{--bg:#0a0a0f;--surface:#111118;--card:#16161f;--border:#2a2a3a;--accent:#7c5cfc;--a2:#fc5c7d;--a3:#5cf0c8;--a4:#fcb45c;--text:#f0eeff;--muted:#7a7a9a;--glow:rgba(124,92,252,0.25)}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;min-height:100vh;overflow-x:hidden}
-body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(124,92,252,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(124,92,252,0.04) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;z-index:0}
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(124,92,252,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(124,92,252,0.04) 1px,transparent 1px);background-size:50px 50px;pointer-events:none}
 .lang-bar{display:flex;justify-content:flex-end;padding:14px 20px 0;max-width:780px;margin:0 auto;position:relative;z-index:2}
 .lang-toggle{display:flex;background:var(--surface);border:1px solid var(--border);border-radius:100px;padding:3px;gap:2px}
 .lang-btn{padding:5px 16px;border-radius:100px;border:none;background:transparent;color:var(--muted);font-size:13px;font-weight:500;cursor:pointer;transition:all .22s;font-family:'Plus Jakarta Sans',sans-serif}
 .lang-btn.active{background:linear-gradient(135deg,var(--accent),#5a3cc4);color:white;box-shadow:0 2px 10px var(--glow)}
 .container{max-width:780px;margin:0 auto;padding:0 20px 80px;position:relative;z-index:1}
 header{padding:24px 0 22px;text-align:center}
-.badge{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,rgba(124,92,252,0.2),rgba(92,240,200,0.1));border:1px solid rgba(124,92,252,0.3);border-radius:100px;padding:6px 16px;font-size:11px;font-weight:600;color:var(--a3);letter-spacing:1px;text-transform:uppercase;margin-bottom:16px}
+.badge{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,rgba(124,92,252,0.2),rgba(92,240,200,0.1));border:1px solid rgba(124,92,252,0.3);border-radius:100px;padding:6px 14px;font-size:12px;color:var(--a3)}
 .dot{width:6px;height:6px;background:var(--a3);border-radius:50%;animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(0.8)}}
-h1{font-family:'Outfit',sans-serif;font-size:clamp(28px,6vw,48px);font-weight:800;line-height:1.1;background:linear-gradient(135deg,#fff 30%,var(--accent) 70%,var(--a2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:10px}
+h1{font-family:'Outfit',sans-serif;font-size:clamp(28px,6vw,48px);font-weight:800;line-height:1.1;background:linear-gradient(135deg,#fff 30%,var(--accent) 70%,var(--a2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .subtitle{color:var(--muted);font-size:15px;line-height:1.6;max-width:500px;margin:0 auto}
 .prog-wrap{margin:24px 0 20px;display:none}.prog-wrap.on{display:block}
 .prog-top{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-bottom:8px}
@@ -58,20 +58,20 @@ h1{font-family:'Outfit',sans-serif;font-size:clamp(28px,6vw,48px);font-weight:80
 .copy-btn{margin-top:10px;display:inline-flex;align-items:center;gap:7px;padding:8px 17px;border-radius:100px;border:1px solid var(--border);background:transparent;color:var(--muted);font-size:13px;cursor:pointer;transition:all .2s;font-family:'Plus Jakarta Sans',sans-serif}
 .copy-btn:hover{border-color:var(--a3);color:var(--a3)}.copy-btn.ok{color:var(--a3);border-color:var(--a3)}
 .portfolio-input-wrap{background:var(--card);border:1px solid rgba(92,240,200,0.2);border-radius:14px;padding:16px;margin-top:10px}
-.portfolio-input-wrap textarea{width:100%;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:12px 14px;color:var(--text);font-size:14px;font-family:'Plus Jakarta Sans',sans-serif;resize:vertical;min-height:90px;outline:none;line-height:1.6}
+.portfolio-input-wrap textarea{width:100%;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:12px 14px;color:var(--text);font-size:14px;font-family:'Plus Jakarta Sans',sans-serif}
 .portfolio-input-wrap textarea:focus{border-color:var(--accent)}
 .portfolio-input-wrap textarea::placeholder{color:var(--muted)}
-.portfolio-submit{margin-top:10px;padding:9px 22px;border-radius:100px;background:linear-gradient(135deg,var(--accent),#5a3cc4);border:none;color:white;font-size:14px;font-weight:500;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;transition:all .2s}
+.portfolio-submit{margin-top:10px;padding:9px 22px;border-radius:100px;background:linear-gradient(135deg,var(--accent),#5a3cc4);border:none;color:white;font-size:14px;font-weight:500;cursor:pointer;transition:all .2s}
 .portfolio-submit:hover{transform:translateY(-1px);box-shadow:0 4px 16px var(--glow)}
-.chat-hint{background:linear-gradient(135deg,rgba(92,240,200,0.06),rgba(124,92,252,0.06));border:1px solid rgba(92,240,200,0.15);border-radius:12px;padding:12px 16px;font-size:13.5px;color:var(--a3);margin-top:4px}
+.chat-hint{background:linear-gradient(135deg,rgba(92,240,200,0.06),rgba(124,92,252,0.06));border:1px solid rgba(92,240,200,0.15);border-radius:12px;padding:12px 16px;font-size:13.5px;color:var(--a3);margin-top:14px;line-height:1.6}
 .restart-btn{margin-top:14px;padding:9px 20px;border-radius:100px;border:1px solid var(--border);background:transparent;color:var(--muted);font-size:13px;cursor:pointer;transition:all .2s;font-family:'Plus Jakarta Sans',sans-serif}
 .restart-btn:hover{border-color:var(--a2);color:var(--a2)}
 #input-area{position:fixed;bottom:0;left:0;right:0;background:linear-gradient(transparent,var(--bg) 28%);padding:18px 20px;z-index:10}
-.input-box{max-width:780px;margin:0 auto;display:flex;gap:10px;align-items:center;background:var(--card);border:1px solid var(--border);border-radius:16px;padding:9px 9px 9px 17px;transition:border-color .2s,box-shadow .2s}
+.input-box{max-width:780px;margin:0 auto;display:flex;gap:10px;align-items:center;background:var(--card);border:1px solid var(--border);border-radius:16px;padding:9px 9px 9px 17px;transition:border-color .2s}
 .input-box:focus-within{border-color:var(--accent);box-shadow:0 0 0 3px rgba(124,92,252,0.1)}
 #user-input{flex:1;background:none;border:none;outline:none;color:var(--text);font-size:15px;font-family:'Plus Jakarta Sans',sans-serif;resize:none;max-height:120px;min-height:24px;line-height:1.5}
 #user-input::placeholder{color:var(--muted)}
-#send-btn{width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#5a3cc4);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0;color:white}
+#send-btn{width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#5a3cc4);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;color:#fff}
 #send-btn:hover:not(:disabled){transform:scale(1.05);box-shadow:0 0 14px var(--glow)}
 #send-btn:disabled{opacity:.35;cursor:not-allowed}
 .spacer{height:120px}#bottom{height:1px}
@@ -131,7 +131,7 @@ const UI = {
     portfolioHasQ:"You have portfolio work — great! Want AI to personalize your outreach using your actual work?",
     portfolioOptYes:"Yes — I'll describe my work",
     portfolioOptNo:"No — write niche-based message",
-    portfolioDescQ:"Describe your best portfolio work in 2–3 sentences.\nWhat did you make? For whom? What result did it get?\n\n(e.g. \"I designed a Shopify store for a clothing brand that boosted their sales by 40%\")",
+    portfolioDescQ:"Describe your best portfolio work in 2–3 sentences.\nWhat did you make? For whom? What result did it get?\n\n(e.g. \"I designed a Shopify store for a clothing brand that boosted sales by 40%\")",
     portfolioDescPh:"Describe your best work here...",
     portfolioDescBtn:"Use This for My Outreach →",
     qs:[
@@ -164,7 +164,7 @@ const UI = {
     portfolioHasQ:"Aapke paas portfolio hai — zabardast! Kya AI aapke asli kaam ke mutabiq outreach message likhe?",
     portfolioOptYes:"Haan — main apna kaam describe karunga",
     portfolioOptNo:"Nahi — niche-based message likho",
-    portfolioDescQ:"Apna best portfolio kaam 2-3 sentences mein describe karein.\nKya banaya? Kiske liye? Kya result mila?\n\n(Misal: \"Maine ek clothing brand ka Shopify store design kiya jis se unki sales 40% barhi\")",
+    portfolioDescQ:"Apna best portfolio kaam 2-3 sentences mein describe karein.\nKya banaya? Kiske liye? Kya result mila?\n\n(Misal: \"Maine ek clothing brand ka Shopify store design kiya jis se unki farokht 40% badh gai\")",
     portfolioDescPh:"Apna best kaam yahan describe karein...",
     portfolioDescBtn:"Isi se Outreach likho →",
     qs:[
@@ -172,9 +172,9 @@ const UI = {
       {key:"experience",q:"Yeh skill aap kitne arse se seekh ya use kar rahe hain?",type:"chips",opts:["Abhi shuru kiya (0–6 maah)","Beginner (6m–1 saal)","Intermediate (1–3 saal)","Experienced (3–5 saal)","Expert (5+ saal)"]},
       {key:"subskills", q:"Is skill ke andar specifically kya kya aata hai? Sab batayein.\n(Misal: Design → Logo, Social Media, UI/UX, Branding...)",type:"text"},
       {key:"enjoy",     q:"Apni skill mein konsa kaam karte waqt sabse zyada maza aata hai?",type:"text"},
-      {key:"portfolio", q:"Kya aapke paas koi portfolio ya past work hai jo clients ko dikha sakein?",type:"chips",opts:["Haan — mazboot portfolio hai","Kuch projects hain","Sirf practice work hai","Abhi kuch nahi hai"]},
+      {key:"portfolio", q:"Kya aapke paas koi portfolio ya past work hai jo clients ko dikha sakein?",type:"chips",opts:["Haan — mazboot portfolio hai","Kuch projects hain","Sirf practice work hai","Abhi portfolio nahi hai"]},
       {key:"tools",     q:"Aap konse tools ya software use karte hain?\n(jaise Figma, Photoshop, Python, Premiere Pro, Canva, ChatGPT...)",type:"text"},
-      {key:"goal",      q:"Aakhri sawal! Is skill se aapka main goal kya hai?",type:"chips",opts:["Freelancing shuru karna","Agency banana","Content Creator banna","Full-Time Job chahiye","Passive Income chahiye"]}
+      {key:"goal",      q:"Aakhri sawal! Is skill se aapka main goal kya hai?",type:"chips",opts:["Freelancing shuru karna","Agency banana","Content Creator banna","Full-Time Job chahiye","Passive Income banani hai"]}
     ]
   }
 };
@@ -340,13 +340,23 @@ User profile:
 - Goal: ${answers.goal}
 
 Return ONLY a raw JSON object. No markdown, no backticks, no explanation.
-{"niche":{"title":"Very specific niche title","description":"2 sentences about this niche"},"whyThisNiche":"2 sentences why this matches their skills","targetAudience":{"primary":"1 sentence describing ideal client","segments":["seg1","seg2","seg3","seg4"]},"problems":["p1","p2","p3","p4","p5"],"solutions":["s1","s2","s3","s4"],"aiOpportunity":"2 sentences naming specific AI tools","firstStep":"1 concrete action this week"}`;
+{"niche":{"title":"Very specific niche title","description":"2 sentences about this niche"},"whyThisNiche":"2 sentences why this matches their skills","targetAudience":{"primary":"1 sentence describing primary target client","segments":["segment 1","segment 2","segment 3"]},"problems":["problem 1","problem 2","problem 3","problem 4"],"solutions":["solution 1","solution 2","solution 3","solution 4"],"aiOpportunity":"1-2 sentences about AI opportunity in this niche","firstStep":"Specific first action they should take this week"}`;
 
   try{
     const raw=await callAI(null,[{role:'user',content:nichePrompt}],1500);
-    const s=raw.indexOf('{'),e=raw.lastIndexOf('}');
-    if(s===-1||e===-1)throw new Error('Invalid response');
-    const result=JSON.parse(raw.slice(s,e+1));
+    
+    // Handle both object and string responses
+    let result;
+    if(typeof raw === 'object' && raw !== null) {
+      result = raw;
+    } else if(typeof raw === 'string') {
+      const s=raw.indexOf('{'),e=raw.lastIndexOf('}');
+      if(s===-1||e===-1)throw new Error('Invalid response: no JSON found');
+      result=JSON.parse(raw.slice(s,e+1));
+    } else {
+      throw new Error('Invalid response type');
+    }
+    
     lastResult=result;rmThink();
     await doOutreach(result);
   }catch(err){
@@ -409,12 +419,12 @@ function showResult(r,outreachMsg,isPortfolioBased){
     <div class="divider"></div>
     <div class="rsec">
       <div class="rlabel">⚡ ${U.labels.problems}</div>
-      ${r.problems.map((p,i)=>`<div style="display:flex;gap:10px;align-items:flex-start;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:14px;color:#c0bce0;line-height:1.6"><span style="width:22px;height:22px;border-radius:6px;background:rgba(252,92,125,.15);color:#ff7fa0;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0">${i+1}</span><span>${p}</span></div>`).join('')}
+      ${r.problems.map((p,i)=>`<div style="display:flex;gap:10px;align-items:flex-start;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:14px;color:#c0bce0;line-height:1.6"><strong style="color:var(--a3);flex-shrink:0">${i+1}.</strong><span>${p}</span></div>`).join('')}
     </div>
     <div class="divider"></div>
     <div class="rsec">
       <div class="rlabel">💡 ${U.labels.solutions}</div>
-      ${r.solutions.map((s,i)=>`<div style="display:flex;gap:10px;align-items:flex-start;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:14px;color:#c0bce0;line-height:1.6"><span style="width:22px;height:22px;border-radius:6px;background:rgba(124,92,252,.15);color:#a88fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0">${i+1}</span><span>${s}</span></div>`).join('')}
+      ${r.solutions.map((s,i)=>`<div style="display:flex;gap:10px;align-items:flex-start;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:14px;color:#c0bce0;line-height:1.6"><strong style="color:var(--a3);flex-shrink:0">${i+1}.</strong><span>${s}</span></div>`).join('')}
     </div>
     <div class="divider"></div>
     <div class="rsec"><div class="rlabel">🤖 ${U.labels.ai}</div><div class="rtext">${r.aiOpportunity}</div></div>
@@ -454,7 +464,7 @@ async function handleChat(val){
   chatHistory.push({role:'user',content:val});
   const sysMsg=lang==='en'
     ?`You are NicheIQ, a friendly freelance business advisor. The user's niche is: "${lastResult?.niche?.title||'analyzed'}". Answer follow-up questions helpfully in under 100 words.`
-    :`Aap NicheIQ hain, ek dost freelance business advisor. User ki niche hai: "${lastResult?.niche?.title||'analyzed'}". Sawalaat ka madadgar jawab dein, 100 words se kam mein. Roman Urdu mein jawab dein.`;
+    :`Aap NicheIQ hain, ek dost freelance business advisor. User ki niche hai: "${lastResult?.niche?.title||'analyzed'}". Sawalaat ka madadgar jawab dein, 100 words se kam mein. Roman Urdu mein jawab likho.`;
   try{
     const reply=await callAI(sysMsg,chatHistory,400);
     chatHistory.push({role:'assistant',content:reply});
